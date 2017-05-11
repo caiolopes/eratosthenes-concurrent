@@ -9,7 +9,7 @@ int main (int argc, char **argv) {
   if (argc > 1) {
     int n = atoi(argv[1]);
 
-    vector<int> primes(n + 1);
+    vector<unsigned char> primes(n + 1);
 
     for (int i = 0; i <= n; i++) {
       primes[i] = 1;
