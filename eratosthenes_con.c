@@ -33,8 +33,6 @@ void run() {
 }
 
 int main (int argc, char **argv) {
-
-
     if (argc > 1) {
         n_max = atoi(argv[1]);
         int n_threads = atoi(argv[2]);
@@ -43,6 +41,8 @@ int main (int argc, char **argv) {
           primes[i] = 1;
         }
 
+        primes[0] = 0;
+        primes[1] = 1;
         pthread_t* threads = calloc(sizeof(pthread_t), n_threads);
 
         pthread_mutex_init(&index_cond_lock, NULL);

@@ -16,7 +16,7 @@ int main (int argc, char **argv) {
     }
 
     primes[0] = 0; // 0
-    primes[1] = 1; // 1
+    primes[1] = 0; // 1
 
     for (int i = 2; i <= sqrt(n); i++) {
       if (primes[i] == 1) {
