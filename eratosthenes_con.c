@@ -70,11 +70,14 @@ int main (int argc, char **argv) {
     }
 
     if (argc > 3) {
+      int count = 0;
       for (int i = 0; i <= n_max; i++) {
         if (primes[i] == 1) {
-          printf("%d\n", i);
+          count++;
         }
       }
+
+      printf("\nThere are %d primes less than or equal to %d\n\n", count, n_max);
     }
 
     return 0;

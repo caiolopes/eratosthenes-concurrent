@@ -27,11 +27,14 @@ int main (int argc, char **argv) {
     }
 
     if (argc > 2) {
+      int count = 0;
       for (int i = 0; i < primes.size(); i++) {
         if (primes[i]) {
-          cout << i << endl;
+          count++;
         }
       }
+      cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
+
     }
   } else {
     cout << "usage: ./e_seq n [--print]" << endl;

@@ -1,8 +1,8 @@
 all:
+	g++ trial_division.cpp -o build/td
 	g++ eratosthenes_seq.cpp -o build/e_seq
 	gcc eratosthenes_con.c -pthread -lm -o build/e_con	
-	g++ trial_division.cpp -o build/td
-	g++ eratosthenes_data.cpp -o build/e_data -lpthread
+	g++ eratosthenes_data.cpp -o build/e_data -pthread
 
 td:
 	./build/td ${N}
