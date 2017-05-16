@@ -7,7 +7,8 @@
 using namespace std;
 
 struct process_t {
-  int i;
+  int k;
+  int n;
   int begin;
   int end;
 };
@@ -15,11 +16,25 @@ struct process_t {
 typedef process_t process_t;
 
 vector<int> primes;
+pthread_mutex_t print_lock;
 
 void *process(void *args) {
-  //for (int j = begin; i*j <= end; j++) {
-    //primes[i*j] = 0;
-  //}
+  process_t *data = (process_t *) args;
+
+  //pthread_mutex_lock(&print_lock);
+  //cout << "from " << data->begin << " to " << data->end << endl;
+  //pthread_mutex_unlock(&print_lock);
+  for (int i = 2; i <= sqrt(data->n); i++) {
+    if (primes[i] == 1) {
+      for (int j = i; i*j <= data->end; j++) {
+          pthread_mutex_lock(&print_lock);
+          cout << "k: " << data->k << ", i*j: " << i << "*" << j<< endl;
+          pthread_mutex_unlock(&print_lock);
+          primes[i*j] = 0;
+      }
+    }
+  }
+  
   pthread_exit(NULL);
 }
 
@@ -42,36 +57,35 @@ int main (int argc, char **argv) {
     int rc;
     pthread_t threads[num_threads];
 
-    cout << first_block_size << endl;
-    cout << block_size << endl;
+    int last_end;
+    pthread_mutex_init(&print_lock, NULL);
+    for (int k = 0; k < num_threads; k++) {
+      process_t *args = (process_t *) malloc(sizeof(process_t));
 
-    for (int i = 2; i <= sqrt(n); i++) {
-      if (primes[i] == 1) {
-        int last_end;
-        for (int k = 0; k < num_threads; k++) {
-          process_t *args = (process_t *) malloc(sizeof(process_t));
-
-          args->i = i;
-          if (k == 0) {
-            args->begin = 2;
-            args->end = first_block_size;
-            last_end = args->end;
-          } else {
-            args->begin = last_end + 1;
-            args->end = args->begin - 1 + block_size;
-            last_end = args->end;
-          }
-
-          cout << "i: " << i << ", k: " << k << ", start: " << args->begin << ", end: " << args->end << endl;
-
-          //rc = pthread_create(&threads[k], NULL, process, (void *)args);
-
-          //if (rc) {
-            //cout << "Error: unable to create thread, " << rc << endl;
-            //exit(1);
-          //} 
-        }
+      args->k = k;
+      args->n = n;
+      if (k == 0) {
+        args->begin = 2;
+        args->end = first_block_size;
+        last_end = args->end;
+      } else {
+        args->begin = last_end + 1;
+        args->end = args->begin - 1 + block_size;
+        last_end = args->end;
       }
+
+      //cout << "k: " << k << ", start: " << args->begin << ", end: " << args->end << endl;
+
+      rc = pthread_create(&threads[k], NULL, process, (void *)args);
+
+      if (rc) {
+        cout << "Error: unable to create thread, " << rc << endl;
+        exit(1);
+      } 
+    }
+
+    for (int k = 0; k < num_threads; k++) {
+      pthread_join(threads[k], NULL);
     }
 
     if (argc > 3) {
