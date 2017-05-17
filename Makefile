@@ -1,17 +1,8 @@
 all:
-	g++ trial_division.cpp -o build/td
+	gcc sequential.c -o build/sequential
+	gcc control.c -pthread -lm -o build/control
 	g++ eratosthenes_seq.cpp -o build/e_seq
-	gcc eratosthenes_con.c -pthread -lm -o build/e_con	
 	g++ eratosthenes_data.cpp -o build/e_data -pthread
-
-td:
-	./build/td ${N}
-
-e_seq:
-	./build/e_seq ${N}
-
-e_con:
-	./build/e_con ${N} ${T}
 
 clean:
 	rm -rf build/*

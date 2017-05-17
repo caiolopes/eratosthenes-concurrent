@@ -13,19 +13,19 @@ Nesse trabalho foi implementado o algoritmo Crivo de Eratóstenes, este utilizad
 
 |            	| Threads 	| N             	| SpeedUp 	| Eficiência 	| Tempo 	|
 |------------	|---------	|---------------	|---------	|------------	|-------	|
-| Sequencial 	| -       	| 100.000       	|         	|            	|       	|
-| Sequencial 	| -       	| 1.000.000.000 	|         	|            	|       	|
-| Dados      	| 2       	| 100.000       	|         	|            	|       	|
-| Dados      	| 2       	| 1.000.000.000 	|         	|            	|       	|
-| Dados      	| 4       	| 100.000       	|         	|            	|       	|
-| Dados      	| 4       	| 1.000.000.000 	|         	|            	|       	|
-| Dados      	| 8       	| 100.000       	|         	|            	|       	|
-| Dados      	| 8       	| 1.000.000.000 	|         	|            	|       	|
-| Controle   	| 2       	| 100.000       	|         	|            	|       	|
-| Controle   	| 2       	| 1.000.000.000 	|         	|            	|       	|
-| Controle   	| 4       	| 100.000       	|         	|            	|       	|
-| Controle   	| 4       	| 1.000.000.000 	|         	|            	|       	|
-| Controle   	| 8       	| 100.000       	|         	|            	|       	|
-| Controle   	| 8       	| 1.000.000.000 	|         	|            	|       	|
+| Sequencial 	| -       	| 5.000.000      	|         	|            	|       	|
+| Sequencial 	| -       	| 500.000.000 	  |         	|            	|       	|
+| Dados      	| 2       	| 5.000.000      	|         	|            	|       	|
+| Dados      	| 2       	| 500.000.000 	  |         	|            	|       	|
+| Dados      	| 4       	| 5.000.000      	|         	|            	|       	|
+| Dados      	| 4       	| 500.000.000 	  |         	|            	|       	|
+| Dados      	| 8       	| 5.000.000      	|         	|            	|       	|
+| Dados      	| 8       	| 500.000.000 	  |         	|            	|       	|
+| Controle   	| 2       	| 5.000.000      	|         	|            	|       	|
+| Controle   	| 2       	| 500.000.000 	  |         	|            	|       	|
+| Controle   	| 4       	| 5.000.000      	|         	|            	|       	|
+| Controle   	| 4       	| 500.000.000 	  |         	|            	|       	|
+| Controle   	| 8       	| 5.000.000      	|         	|            	|       	|
+| Controle   	| 8       	| 500.000.000 	  |         	|            	|       	|
 
 Tabela 1: Diferentes desempenhos

@@ -27,9 +27,9 @@ void *process(void *args) {
   for (int i = 2; i <= sqrt(data->n); i++) {
     if (primes[i] == 1) {
       for (int j = i; i*j <= data->end; j++) {
-          pthread_mutex_lock(&print_lock);
-          cout << "k: " << data->k << ", i*j: " << i << "*" << j<< endl;
-          pthread_mutex_unlock(&print_lock);
+          //pthread_mutex_lock(&print_lock);
+          //cout << "k: " << data->k << ", i*j: " << i << "*" << j<< endl;
+          //pthread_mutex_unlock(&print_lock);
           primes[i*j] = 0;
       }
     }
@@ -59,6 +59,7 @@ int main (int argc, char **argv) {
 
     int last_end;
     pthread_mutex_init(&print_lock, NULL);
+
     for (int k = 0; k < num_threads; k++) {
       process_t *args = (process_t *) malloc(sizeof(process_t));
 
@@ -89,11 +90,13 @@ int main (int argc, char **argv) {
     }
 
     if (argc > 3) {
+      int count = 0;
       for (int i = 0; i < primes.size(); i++) {
         if (primes[i]) {
-          cout << i << endl;
+          count++;
         }
       }
+     cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
     }
   } else {
     cout << "usage: " << argv[0] << " n num_threads [print]" << endl;
