@@ -97,7 +97,7 @@ int main (int argc, char **argv) {
           count++;
         }
       }
-    //  cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
+     cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
     }
   } else {
     cout << "usage: " << argv[0] << " n num_threads [print]" << endl;

@@ -77,7 +77,7 @@ int main (int argc, char **argv) {
         }
       }
 
-    //   printf("\nThere are %d primes less than or equal to %d\n\n", count, n_max);
+      printf("\nThere are %d primes less than or equal to %d\n\n", count, n_max);
     }
 
     return 0;
