@@ -34,7 +34,7 @@ void *process(void *args) {
       }
     }
   }
-  
+
   pthread_exit(NULL);
 }
 
@@ -82,7 +82,7 @@ int main (int argc, char **argv) {
       if (rc) {
         cout << "Error: unable to create thread, " << rc << endl;
         exit(1);
-      } 
+      }
     }
 
     for (int k = 0; k < num_threads; k++) {
@@ -93,10 +93,11 @@ int main (int argc, char **argv) {
       int count = 0;
       for (int i = 0; i < primes.size(); i++) {
         if (primes[i]) {
+		  cout << i << '\n';
           count++;
         }
       }
-     cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
+    //  cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
     }
   } else {
     cout << "usage: " << argv[0] << " n num_threads [print]" << endl;

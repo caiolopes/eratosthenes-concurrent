@@ -20,7 +20,7 @@ int main (int argc, char **argv) {
 
     for (int i = 2; i <= sqrt(n); i++) {
       if (primes[i] == 1) {
-        for (int j = 2; i*j <= n; j++) {
+        for (int j = i; i*j <= n; j++) {
           primes[i*j] = 0;
         }
       }
@@ -30,10 +30,11 @@ int main (int argc, char **argv) {
       int count = 0;
       for (int i = 0; i < primes.size(); i++) {
         if (primes[i]) {
-          count++;
+			cout << i << "\n";
+        //   count++;
         }
       }
-      cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
+    //   cout << "\nThere are " << count << " primes less than or equal to " << n << "\n" << endl;
 
     }
   } else {

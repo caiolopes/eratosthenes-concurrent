@@ -13,14 +13,13 @@ pthread_mutex_t index_cond_lock;
 
 
 void run() {
-    int i = 0;
     while(1) {
         pthread_mutex_lock(&index_cond_lock);
         if(n > sqrt(n_max)) {
             pthread_mutex_unlock(&index_cond_lock);
             return;
         }
-        i = n;
+        int i = n;
         n++;
         pthread_mutex_unlock(&index_cond_lock);
         if (primes[i] == 1) {
@@ -73,11 +72,12 @@ int main (int argc, char **argv) {
       int count = 0;
       for (int i = 0; i <= n_max; i++) {
         if (primes[i] == 1) {
+			printf("%d\n", i);
           count++;
         }
       }
 
-      printf("\nThere are %d primes less than or equal to %d\n\n", count, n_max);
+    //   printf("\nThere are %d primes less than or equal to %d\n\n", count, n_max);
     }
 
     return 0;
