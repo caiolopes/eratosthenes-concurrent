@@ -43,6 +43,6 @@ O modelo de paralelismo por controle entretanto, apresentou valores de speedup b
 
 Ainda mais, esses códigos poderiam possuir um valor ainda mais alto de speedup e eficiêcia caso fosse utilizado o algoritmo de cálculo impar, onde desde o início do código já se elimina quaisquer valores pares do vetor, poupando o algoritmo de verificar se múltiplos de 2 são primos, o que no caso conta por metade da memória e dos cálculos executados.
 
-##Conclusão
+## Conclusão
 
 Apesar do algoritmo do crivo de eratosthenes ser eficiênte em sua forma sequêncial, sua paralelização é de difícil modelagem e não apresenta grandes valores de eficiência ou speedup.
