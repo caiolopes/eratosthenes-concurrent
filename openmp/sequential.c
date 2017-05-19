@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 /*
  * Based on "Parallel programming in C with MPI and OpenMP"
@@ -7,12 +8,15 @@
  */
 
 int main(int argc, char *argv[]) {
-  unsigned int count, first, i, index, n, prime;
+  unsigned int first, i, index, n, prime;
   char *marked;
 
   if (argc < 2) {
-    printf("Command line: %s N [print]\n", argv[0]);
-    exit(1);
+      printf("Usage: %s n [--print all]\n"
+             "n: maximum number\n"
+             "--print: print num of primes (optional)\n"
+             "all: print all primes (optional)\n", argv[0]);
+      exit(1);
   }
 
   n = atoi(argv[1]);
@@ -46,13 +50,26 @@ int main(int argc, char *argv[]) {
   } while (prime * prime <= n);
 
   if (argc > 2) {
-    count = 0;
-    for (i = 0; i <= n; i++) {
-      count += marked[i];
-    }
-
-    printf("\nThere are %d primes less than or equal to %d\n\n", count, n);
+      if(!strcmp(argv[2], "--print") || !strcmp(argv[2], "--print\n")) {
+          int count = 0;
+          if((argc > 3) && (!strcmp(argv[3], "all") || !strcmp(argv[2], "all\n"))) {
+              for (int i = 0; i <= n; i++) {
+                  if (marked[i] == 1) {
+                      printf("%d\n", i);
+                      count++;
+                  }
+              }
+          } else {
+              for (int i = 0; i <= n; i++) {
+                  if (marked[i] == 1) {
+                      count++;
+                  }
+              }
+          }
+          printf("There are %d primes less than or equal to %d\n", count, n);
+      }
   }
+
 
   return 0;
 }
