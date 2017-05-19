@@ -26,7 +26,7 @@ void *process(void *args) {
   //pthread_mutex_unlock(&print_lock);
   for (int i = 2; i <= sqrt(data->n); i++) {
     if (primes[i] == 1) {
-      for (int j = i; i*j <= data->end; j++) {
+      for (int j = data->begin/i; i*j <= data->end; j++) {
           //pthread_mutex_lock(&print_lock);
           //cout << "k: " << data->k << ", i*j: " << i << "*" << j<< endl;
           //pthread_mutex_unlock(&print_lock);

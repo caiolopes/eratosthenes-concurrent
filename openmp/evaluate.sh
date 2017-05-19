@@ -42,5 +42,5 @@ EFC=$(echo "scale=9; $SPEEDUPC/$THREADS" | bc -l)
 
 echo "SpeedUp data: 			$SPEEDUPD"
 echo "SpeedUp control: 		$SPEEDUPC"
-echo "Efficiency data: 		$SPEEDUPD"
-echo "Efficiency control: 		$SPEEDUPC"
+echo "Efficiency data: 		$EFD"
+echo "Efficiency control: 		$EFC"
