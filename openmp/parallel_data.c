@@ -8,12 +8,10 @@
  */
 
 int main(int argc, char *argv[]) {
-  unsigned int count, first, i, index, n, prime, num_threads;
+  unsigned first, i, index, n, prime, num_threads;
   char *marked;
 
   if (argc < 3) {
-//    printf("Command line: %s N num_threads [--print all]\n", argv[0]);
-//    exit(1);
     printf("Usage: %s n [--print all]\n"
            "n: maximum number\n"
            "num_threads: number of threads\n"

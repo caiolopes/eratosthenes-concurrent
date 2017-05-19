@@ -4,7 +4,7 @@
 #include <omp.h>
 #include <string.h>
 
-// Usage: time ./e_con n [--print all]
+// Usage: time ./e_con n n_threads [--print all]
 int n;
 int n_max;
 int n_threads;
@@ -14,15 +14,17 @@ unsigned char* primes;
 int main (int argc, char **argv) {
     omp_lock_t index_lock;
 
-    if(argc <  2) {
+    if(argc <  3) {
        printf("Usage: %s n [--print all]\n"
               "n: maximum number\n"
+              "n_threads: number of threads\n"
               "--print: print num of primes (optional)\n"
               "all: print all primes (optional)\n", argv[0]);
        exit(1);
     }
 
     n_max = atoi(argv[1]);
+    n_threads = atoi(argv[2]);
     primes = (unsigned char*)malloc(sizeof(unsigned char) * (n_max+1));
     for (int i = 0; i <= n_max; i++) {
       primes[i] = 1;
@@ -37,7 +39,7 @@ int main (int argc, char **argv) {
     int nthreads = omp_get_num_threads();
 
 
-#pragma omp parallel
+#pragma omp parallel num_threads(n_threads)
     while(1) {
         omp_set_lock(&index_lock);
         if(n > sqrt(n_max)) {
@@ -55,10 +57,10 @@ int main (int argc, char **argv) {
         nthreads = omp_get_num_threads();
     }
 
-    if (argc > 2) {
-        if(!strcmp(argv[2], "--print") || !strcmp(argv[2], "--print\n")) {
+    if (argc > 3) {
+        if(!strcmp(argv[3], "--print") || !strcmp(argv[3], "--print\n")) {
             int count = 0;
-            if((argc > 3) && (!strcmp(argv[3], "all") || !strcmp(argv[2], "all\n"))) {
+            if((argc > 4) && (!strcmp(argv[4], "all") || !strcmp(argv[4], "all\n"))) {
                 for (int i = 0; i <= n_max; i++) {
                     if (primes[i] == 1) {
                         printf("%d\n", i);
