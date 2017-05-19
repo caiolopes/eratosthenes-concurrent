@@ -1,8 +1,7 @@
 all:
-	gcc sequential.c -o build/sequential
-	gcc control.c -pthread -lm -o build/control
-	g++ eratosthenes_seq.cpp -o build/e_seq
-	g++ eratosthenes_data.cpp -o build/e_data -pthread
+	gcc parallel_control.c -o build/parallel_control -pthread -lm
+	g++ parallel_data.cpp -o build/parallel_data -pthread
+	g++ sequential.cpp -o build/sequential
 
 clean:
 	rm -rf build/*
